@@ -3,27 +3,24 @@
 using namespace std;
 
 const char SYMBOLS[] = {'-', '|'};
-const int MAX_M = 45, MAX_N = 45, MAX_R = MAX_M*MAX_N;
-int R[MAX_M + 1][MAX_N + 1], N[MAX_R + 1], sz[MAX_R + 1];
+vector<int> N, sz;
+vector<vector<int>> R;
 int m, n, r;
 
 /* Information to track */
-int HV[MAX_M + 1][MAX_N + 1];
-int VH[MAX_M + 1][MAX_N + 1];
-int HH[MAX_M + 1][MAX_N + 1];
-int D[MAX_R + 1], P[MAX_R + 1];
-char current[MAX_M + 1][MAX_N + 1];
+vector<vector<char>> current;
+vector<vector<int>> HV, VH, HH;
+vector<int> D, P;
 chrono::steady_clock::time_point start, finish;
 
 void initialize() {
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1; j <= n; j++) {
-            current[i][j] = '.';
-            HV[i][j] = VH[i][j] = HH[i][j] = 0;
-        }
-    }
-    for (int i = 1; i <= r; i++)
-        D[i] = P[i] = 0;
+    R.assign(m + 1, vector<int>(n + 1, 0));
+    N.assign(r + 1, 0), sz.assign(r + 1, 0);
+    HV.assign(m + 1, vector<int>(n + 1, 0));
+    VH.assign(m + 1, vector<int>(n + 1, 0));
+    HH.assign(m + 1, vector<int>(n + 1, 0));
+    D.assign(r + 1, 0), P.assign(r + 1, 0);
+    current.assign(m + 1, vector<char>(n + 1, '.'));
 }
 
 pair<int,int> getNextCell(int i, int j) {
@@ -75,7 +72,8 @@ void printSolution() {
     for (int i = 1; i <= m; i++)
         for (int j = 1; j <= n; j++)
             cout << current[i][j] << " \n"[j == n];
-    cout << "Time taken: "<< chrono::duration_cast<chrono::milliseconds>(finish - start).count() << " ms" << '\n';
+    long double timeTaken = chrono::duration_cast<chrono::microseconds>(finish - start).count();
+    cout << "Time taken: "<< timeTaken/1000.0 << " ms" << '\n';
 }
 
 void search(int i, int j) {
@@ -99,14 +97,14 @@ int main() {
     ios::sync_with_stdio(0), cin.tie(0);
     cin >> m >> n >> r;
 
+    initialize();
+
     for (int i = 1; i <= r; i++)
         cin >> N[i];
     
     for (int i = 1; i <= m; i++)
         for (int j = 1; j <= n; j++)
             cin >> R[i][j], sz[R[i][j]]++;
-
-    initialize();
 
     start = chrono::steady_clock::now();
     search(1, 1);
