@@ -60,7 +60,7 @@ For example, the following input (for the verifier) represents the Juosan puzzle
 ```
 5 5
 7
-3 1 3 -1 3 -1 4
+3 1 -1 2 3 -1 4
 1 1 1 2 2
 3 4 5 5 5
 3 4 6 6 6
