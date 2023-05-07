@@ -68,7 +68,6 @@ bool mustBacktrack(int i, int j) {
 }
 
 void printSolution() {
-    cout << "===================\n";
     for (int i = 1; i <= m; i++)
         for (int j = 1; j <= n; j++)
             cout << current[i][j] << " \n"[j == n];
@@ -94,7 +93,6 @@ void search(int i, int j) {
 }
 
 int main() {
-    ios::sync_with_stdio(0), cin.tie(0);
     cin >> m >> n >> r;
 
     initialize();
@@ -108,4 +106,5 @@ int main() {
 
     start = chrono::steady_clock::now();
     search(1, 1);
+    cout << "No solution\n";
 }

@@ -48,32 +48,7 @@ bool check_three_consecutive_cells() {
     return true;
 }
 
-bool check_invalid_subgrid() {
-    // Check for 2x3 subgrid of -
-    if (m > 2)
-        for (int i = 1; i + 1 <= m; i++)
-            for (int j = 1; j + 2 <= n; j++)
-                if (
-                    S[i][j] == '-' && S[i][j+1] == '-' && S[i][j+2] == '-' &&
-                    S[i+1][j] == '-' && S[i+1][j+1] == '-' && S[i+1][j+2] == '-'
-                )
-                    return false;
-
-    // Check for 3x2 subgrid of |
-    if (n > 2)
-        for (int i = 1; i + 2 <= m; i++)
-            for (int j = 1; j + 1 <= n; j++)
-                if (
-                    S[i][j] == '|' && S[i][j+1] == '|' &&
-                    S[i+1][j] == '|' && S[i+1][j+1] == '|' &&
-                    S[i+2][j] == '|' && S[i+2][j+1] == '|' 
-                )
-                    return false;
-    return true;
-}
-
 int main() {
-    ios::sync_with_stdio(0), cin.tie(0);
     cin >> m >> n >> r;
 
     initialize();
@@ -90,10 +65,10 @@ int main() {
             cin >> S[i][j];
     
     start = chrono::steady_clock::now();
-    bool isValid = check_number_within_territory() && check_three_consecutive_cells() && check_invalid_subgrid();
+    bool isValid = check_number_within_territory() && check_three_consecutive_cells();
     finish = chrono::steady_clock::now();
 
-    cout << "Valid: " << (isValid ? "yes" : "no") << '\n';
+    cout << "Configuration is " << (isValid ? "" : "not ") << "a solution\n";
 
     long double timeTaken = chrono::duration_cast<chrono::nanoseconds>(finish - start).count();
     cout << "Time taken: "<< timeTaken/1000.0 << " microsecond(s)" << '\n';

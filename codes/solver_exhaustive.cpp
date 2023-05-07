@@ -37,7 +37,6 @@ bool verify() {
 }
 
 void printSolution() {
-    cout << "===================\n";
     for (int i = 1; i <= m; i++)
         for (int j = 1; j <= n; j++)
             cout << S[i][j] << " \n"[j == n];
@@ -57,16 +56,14 @@ void solve() {
 
         // Verify config
         if (verify()) {
-            cout << "solution found\n";
             printSolution();
             return;
         }
     }
-    cout << "solution not found\n";
+    cout << "No solution\n";
 }
 
 int main() {
-    ios::sync_with_stdio(0), cin.tie(0);
     cin >> m >> n >> r;
 
     initialize();
