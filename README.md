@@ -30,7 +30,7 @@ Using the Juosan solver and verifier is straightforward. Here are the basic step
 The Juosan puzzle can be inputted using the following format:
 
 ```
-n m
+m n
 r
 N_1 N_2 ... N_r
 R_{1,1} R_{1,2} ... R_{1,n}
@@ -41,7 +41,7 @@ R_{m,1} R_{m,2} ... R_{m,n}
 
 where:
 
-* `n` and `m` are integers representing the size of the puzzle.
+* `m` and `n` are integers representing the number of rows and columns in the puzzle.
 * `r` is an integer representing the number of territories.
 * `N_i` is the number occurring in territory $i$. If territory $i$ does not contain a number, then `N_i` $= -1$.
 * `R_{i,j}` is an integer label of the territory containing cell $(i,j)$.
