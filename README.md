@@ -15,7 +15,7 @@ This repository includes the following:
 * **Juosan Solution Verifier**: The verifier checks whether a given solution to a Juosan puzzle is correct. You can find the code in the `codes/verifier.cpp` file.
 * **Test Cases**: Seventy test cases of Juosan puzzles in plain text format sourced from [Janko](https://www.janko.at/Raetsel/Juosan/index.htm). You can find them in the `test_cases` directory.
 * **Experimental Data**: Experimental data regarding the runtime of the backtracking solver and verifier. You can find the data in the `experimental_data/Juosan Runtime Experiment.xlsx` file.
-* **preprint**: Preprint of our related paper, submitted to Jurnal Ilmu Komputer dan Informasi (JIKI), this preprint will be deleted once the paper is published and available online.
+* **preprint**: Preprint of our related paper, submitted to Jurnal Ilmu Komputer dan Informasi (JIKI), this preprint will be deleted once the paper is published and available online at https://jiki.cs.ui.ac.id/.
 
 ## How to use
 
